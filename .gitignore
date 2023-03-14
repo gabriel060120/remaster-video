@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+/old_frames
+/c-code/CMakeFiles
+/c-code/cmake_install.cmake
+/c-code/CMakeCache.txt
+/c-code/lerImagem
+/c-code/MakeFile
+*.mp4

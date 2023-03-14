@@ -25,7 +25,7 @@ int main(int argc, char* argv[]){
     cv::Mat frame;
     int frame_number = 0;
 
-    while (video.read(frame) && frame_number <100)
+    while (video.read(frame) && frame_number <10)
     {
         //char frame_file_name[1000000000000];
         //sprintf(frame_file_name, "%d", frame_number);
