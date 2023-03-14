@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+project(get_frames)
+find_package( OpenCV REQUIRED )
+add_executable( lerImagem lerImagem.c )
+target_link_libraries( lerImagem ${OpenCV_LIBS} )
