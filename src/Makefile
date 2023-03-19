@@ -8,7 +8,7 @@ $(RM) := rm -f
 
 all: CPPFLAGS += -l$(PYTHON3NAME)
 all: $(OBJ)
-	$(CC) $(CPPFLAGS) $(CFLAGS) $(OBJ) -o $(EXEC)
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(OBJ) -o $(EXEC) -l$(PYTHON3NAME)
 
 %.o: CPPFLAGS += -I$(PYTHON3INCLPATH) $(shell $(PYTHON3NAME)-config --ldflags)
 
