@@ -3,6 +3,9 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "upscale.h"
+
+
 int main(int argc, char* argv[]){
     cv::VideoCapture video;
     video.open("./../o_tumulo_dos_vagalumes.mp4");
@@ -25,6 +28,7 @@ int main(int argc, char* argv[]){
     cv::Mat frame;
     int frame_number = 0;
 
+    PyObject *module = python_initialize("upscalling.upscalling");
     while (video.read(frame) && frame_number <10)
     {
         //char frame_file_name[1000000000000];
@@ -47,5 +51,6 @@ int main(int argc, char* argv[]){
         }
         frame_number++;
     }
-    
+    //call_from_python(module, "upscalling", argv[1], argv[2]);
+    python_finalize();
 }

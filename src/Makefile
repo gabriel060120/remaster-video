@@ -1,16 +1,21 @@
-SOURCE := upscale_main.c
-OBJ    := $(subst .c,.o,$(SOURCE))
+SOURCE := upscale.c lerImagem.cpp
+OBJ    := $(addsuffix .o,$(basename $(SOURCE)))
 EXEC := main
 PYTHON3VERSION  := 3.10
 PYTHON3NAME     := python$(PYTHON3VERSION)
+OPENCV          := opencv4
 PYTHON3INCLPATH := /usr/include/$(PYTHON3NAME)
+OPENCV4INCLPATH := /usr/include/$(OPENCV)
+
+INCLUDECPPFLAGS := $(addprefix -I,$(PYTHON3INCLPATH) $(OPENCV4INCLPATH))
+LINKLIBS := -l$(PYTHON3NAME) $(shell pkg-config --libs $(OPENCV)) -lavformat -lavcodec
 $(RM) := rm -f
 
 all: CPPFLAGS += -l$(PYTHON3NAME)
 all: $(OBJ)
-	$(CC) $(CPPFLAGS) $(CFLAGS) $(OBJ) -o $(EXEC) -l$(PYTHON3NAME)
+	$(CXX) $(CPPFLAGS) $(CFLAGS) $(OBJ) -o $(EXEC) $(LINKLIBS)
 
-%.o: CPPFLAGS += -I$(PYTHON3INCLPATH) $(shell $(PYTHON3NAME)-config --ldflags)
+%.o: CPPFLAGS += $(INCLUDECPPFLAGS) $(shell $(PYTHON3NAME)-config --ldflags)
 
 
 .PHONY: clean
