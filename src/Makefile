@@ -8,7 +8,7 @@ PYTHON3INCLPATH := /usr/include/$(PYTHON3NAME)
 OPENCV4INCLPATH := /usr/include/$(OPENCV)
 
 INCLUDECPPFLAGS := $(addprefix -I,$(PYTHON3INCLPATH) $(OPENCV4INCLPATH))
-LINKLIBS := -l$(PYTHON3NAME) $(shell pkg-config --libs $(OPENCV)) -lavformat -lavcodec
+LINKLIBS := -l$(PYTHON3NAME) $(shell pkg-config --libs $(OPENCV))
 $(RM) := rm -f
 
 all: CPPFLAGS += -l$(PYTHON3NAME)
