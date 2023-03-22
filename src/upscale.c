@@ -15,6 +15,7 @@ PyObject *python_initialize(const char *restrict modulestr)
         fprintf(stderr, "%s: módulo não encontrado\n", __func__);
         return (void *) 0;
     }
+    return module;
 }
 
 void python_finalize(void)

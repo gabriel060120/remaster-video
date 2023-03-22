@@ -29,6 +29,9 @@ int main(int argc, char* argv[]){
     int frame_number = 0;
 
     PyObject *module = python_initialize("upscalling.upscalling");
+    if (!module) {
+        return EXIT_FAILURE;
+    }
     while (video.read(frame) && frame_number <10)
     {
         //char frame_file_name[1000000000000];
